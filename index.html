@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your GitHub Pages</title>
+    <title>My GitHub Pages</title>
+    <!-- React CDN links -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-    <h1>Welcome to My GitHub Pages Website!</h1>
-    <p>This is a basic site hosted on GitHub Pages.</p>
+    <div id="root"></div>
+    
+    <!-- React components -->
+    <script type="text/babel" src="./components/App.js"></script>
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
