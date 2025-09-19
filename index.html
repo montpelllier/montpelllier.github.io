@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Pages</title>
-    <!-- React CDN links -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="./styles/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My GitHub Pages</title>
+
+  <!-- React CDN (development) -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <!-- Style File -->
+  <link rel="stylesheet" href="./src/styles/main.css">
 </head>
 <body>
-    <div id="root"></div>
-    
-    <!-- React components -->
-    <script type="text/babel" src="./components/App.js"></script>
-    <script type="text/babel">
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+  <div id="root"></div>
+
+  <!-- load data file -->
+  <script type="text/babel" src="./src/data/articles.js"></script>
+
+  <!-- 组件文件依赖顺序要正确 -->
+  <script type="text/babel" src="./src/components/Card.js"></script>
+  <script type="text/babel" src="./src/components/Navbar.js"></script>
+  <script type="text/babel" src="./src/components/Footer.js"></script>
+  <script type="text/babel" src="./src/pages/HomePage.js"></script>
+  <script type="text/babel" src="./src/pages/ProjectPage.js"></script>
+  <script type="text/babel" src="./src/pages/AboutPage.js"></script>
+  <script type="text/babel" src="./src/pages/ArticlesPage.js"></script>
+  <script type="text/babel" src="./src/pages/Article.js"></script>
+  <script type="text/babel" src="./src/App.js"></script>
+
+  <!-- render React root -->
+  <script type="text/babel">
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
 </html>
