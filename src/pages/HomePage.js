@@ -1,4 +1,5 @@
 // HomePage.js
+
 function HomePage({ changePage, openArticle }) {
   return (
     <div className="page home-page">
@@ -57,6 +58,7 @@ function LatestArticles({ openArticle }) {
       <div className="container">
         <div className="section-header">
           <h2 className="section-title">Latest Articles</h2>
+          <a className="section-link" onClick={() => changePage('articles')}>View All Articles</a>
         </div>
         <div className="articles-grid">
           {latestArticles.map(article => (

@@ -1,56 +1,69 @@
-# Personal GitHub Pages Website
+# React + TypeScript + Vite
 
-This is a personal GitHub Pages website built with React (using CDN approach).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Project Structure
+Currently, two official plugins are available:
 
-```
-├── index.html          # Main HTML file
-├── components/         # React components
-│   └── App.js          # All component definitions
-├── styles/             # CSS styles
-│   └── main.css        # Main stylesheet
-└── README.md           # Project documentation
-```
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Features
+## Expanding the ESLint configuration
 
-- Responsive design, adapting to various screen sizes
-- Single Page Application (SPA) structure
-- Includes the following sections:
-  - Navigation bar
-  - Home/Hero section
-  - Projects showcase
-  - About me
-  - Contact information
-  - Footer
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-## Technology Stack
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-- React 18 (imported via CDN)
-- Babel (for JSX transformation)
-- Native CSS
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## Deployment
-
-This project is configured for deployment on GitHub Pages.
-
-## Local Development
-
-Since the project uses React via CDN, you can preview it directly by opening the `index.html` file in your browser, or by using a simple HTTP server:
-
-```bash
-# If you have Python 3 installed
-python -m http.server
-
-# Or using Node.js http-server (requires installation)
-npx http-server
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 ```
 
-## Customization
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-You can customize the website by modifying the following files:
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-- `components/App.js` - Update component content
-- `styles/main.css` - Modify styles
-- `index.html` - Change metadata or add other scripts
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+```
