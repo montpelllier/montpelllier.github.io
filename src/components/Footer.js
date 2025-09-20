@@ -4,12 +4,12 @@ function Footer() {
     <footer className="footer">
       <div className="container">
         <div className="footer-content">
-          <div className="footer-logo">
+          {/* <div className="footer-logo">
             <h3>My Portfolio</h3>
             <p>Building the web, one project at a time.</p>
-          </div>
+          </div> */}
           <div className="footer-links">
-            <div className="footer-section">
+            {/* <div className="footer-section">
               <h4>Pages</h4>
               <ul>
                 <li><a href="#">Home</a></li>
@@ -17,7 +17,7 @@ function Footer() {
                 <li><a href="#">Articles</a></li>
                 <li><a href="#">About</a></li>
               </ul>
-            </div>
+            </div> */}
             <div className="footer-section">
               <h4>Connect</h4>
               <ul>
